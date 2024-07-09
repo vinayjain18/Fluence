@@ -29,7 +29,6 @@ with st.form("my_form"):
     week = st.selectbox(
         "How many week of content do you need to generate?",
         ("1 week", "2 week"))
-    # submit = st.form_submit_button('Submit', on_click=submit_callback(), disabled=st.session_state.is_generating)
 
     if st.session_state.is_generating:
         submit = st.form_submit_button('Submit', on_click=submit_callback, disabled=True)
@@ -47,7 +46,10 @@ if submit:
     st.session_state.is_generating = True
 
     with st.spinner('Generating content(may take around 1 min)...'):
-        response = generate_response(ig_username, industry, niche, extra, week)
+        response = generate_response(st.secrets["OPENAI_API_KEY"], ig_username, industry, niche, extra, week)
+
+    if response.startswith("```json") and response.endswith("```"):
+        response = response[7:-3]  # Remove the leading and trailing markdown code blocks
 
     # Set the generating flag to False
     st.session_state.is_generating = False

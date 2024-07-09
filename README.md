@@ -1,14 +1,16 @@
 # Fluence: Idea Generating Machine
 
-Fluence is your copilot for helping you generate ideas for your Instagram as per your niche and industry. Currently, it can help you generate 1 or 2 week of ideas at a time.
+Fluence is your copilot for helping you generate ideas for your Instagram as per your niche and industry. It is not your regular Chatgpt response which give general plan instead it create plan customized for your account.
 
 ## Tech Stack:
 - Streamlit(for building web app)
 - instaloader(for scraping IG profile and posts)
-- Llama 3(through meta_ai_api)
+- OpenAI API
 
-## Future work:
-- Trying to add OpenAI/Claude API for fast response
-- Would include Langchain to build complex llm structure for specific tasks
+## Working:
+- First, it takes the creator industry, niche and Instagram username
+- Then, it scrape their instagram profile and extract their bio and latest 10 posts
+- All this data along with the prompt is paas to the OpenAI API and return the output
+- The output is in JSON format and user can download the content plan generated in text file
 
 ### You can access the app here - https://fluence.streamlit.app/

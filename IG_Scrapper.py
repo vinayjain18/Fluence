@@ -42,6 +42,6 @@ def download_latest_captions(username, num_posts=10):
 
 
 if __name__ == "__main__":
-    username = "official_vadapav_girl"
+    username = "narendramodi"
     scrape_instagram_profile(username)
     download_latest_captions(username, 10)
