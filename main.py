@@ -32,7 +32,7 @@ def generate_response(openai_api_key,ig_username, industry, niche, extra, week):
         completion = client.chat.completions.create(
             model="gpt-4o",
             messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "system", "content": "You are a social media marketer with expertise of creating content plan for Instagram users."},
                 {"role": "user", "content": chat_prompt}
             ]
         )

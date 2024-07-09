@@ -13,4 +13,6 @@ Fluence is your copilot for helping you generate ideas for your Instagram as per
 - All this data along with the prompt is paas to the OpenAI API and return the output
 - The output is in JSON format and user can download the content plan generated in text file
 
+#### I want to reduce the cost of openai billing by using less tokens. If anyone have any suggestions, let's discuss.
+
 ### You can access the app here - https://fluence.streamlit.app/

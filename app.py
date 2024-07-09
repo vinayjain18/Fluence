@@ -37,7 +37,7 @@ with st.form("my_form"):
 
 
 if submit:
-    st.markdown("**Submitted**, here are the details:")
+    st.markdown("**Submitted**, here is your content plan:")
 
     st.write("Your Instagram username:", ig_username)
     st.write()
@@ -45,7 +45,7 @@ if submit:
     # Set the generating flag to True
     st.session_state.is_generating = True
 
-    with st.spinner('Generating content(may take around 1 min)...'):
+    with st.spinner('Generating content(may take few seconds)...'):
         response = generate_response(st.secrets["OPENAI_API_KEY"], ig_username, industry, niche, extra, week)
 
     if response.startswith("```json") and response.endswith("```"):
