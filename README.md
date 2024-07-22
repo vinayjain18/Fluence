@@ -1,18 +1,72 @@
-# Fluence: Idea Generating Machine
+# Fluence - Instagram Content Planner
 
-Fluence is your copilot for helping you generate ideas for your Instagram as per your niche and industry. It is not your regular Chatgpt response which give general plan instead it create plan customized for your account.
+Fluence is an Instagram content planner that helps creators and businesses strategically plan, and generate personalized content based on their industry, niche, and profile details. Our goal is to empower you to unleash your creativity and boost your engagement with tailored content strategies.
 
-## Tech Stack:
-- Streamlit(for building web app)
-- instaloader(for scraping IG profile and posts)
-- OpenAI API
+## Table of Contents
 
-## Working:
-- First, it takes the creator industry, niche and Instagram username
-- Then, it scrape their instagram profile and extract their bio and latest 10 posts
-- All this data along with the prompt is paas to the OpenAI API and return the output
-- The output is in JSON format and user can download the content plan generated in text file
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [App Link](#app-link)
+- [Contact](#contact)
 
-#### I want to reduce the cost of openai billing by using less tokens. If anyone have any suggestions, let's discuss.
+## Features
 
-### You can access the app here - https://fluence.streamlit.app/
+- Personalized content plans based on your industry, niche, and Instagram profile.
+- Industry insights to stay ahead of trends.
+- Intuitive interface for easy content planning.
+- Engagement-boosting content recommendations.
+
+## Technologies Used
+
+- **Frontend:** HTML, Next.js, Tailwind CSS, TypeScript
+- **Backend:** Django
+- **Database:** SQLite
+- **API Integration:** Instagram Graph API
+- **Deployment:** Vercel
+
+## Installation
+
+### Prerequisites
+
+- Node.js
+- npm
+- Python(version: 3.10+)
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/vinayjain18/Fluence.git
+   cd Fluence
+   cd static
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run build-css
+   ```
+
+4. Navigate to the main directory and create virtual environment:
+   ```bash
+   cd ..
+   python -m venv venv
+   source venv/bin/activate #for windows, venv/scripts/activate
+   ```
+5. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+6. Run the Django server:
+   ```bash
+   python manage.py runserver
+   ```
+
+## App Link
+Access the live application here: https://www.google.com
+
+## Contact
+For any questions or feedback, please contact me at vinayjain449@gmail.com

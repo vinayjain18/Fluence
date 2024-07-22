@@ -1,0 +1,306 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Fluence</title>
+  <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}" type="image/x-icon" />
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
+
+  <!-- ==== WOW JS ==== -->
+  <script src="{% static 'js/wow.min.js' %}"></script>
+  <script>
+    new WOW().init();
+  </script>
+</head>
+
+<body>
+  <!-- ====== Navbar Section Start -->
+  <div class="absolute top-0 left-0 z-40 flex items-center w-full bg-transparent ud-header">
+    <div class="container">
+      <div class="relative flex items-center justify-between -mx-4">
+        <div class="max-w-full px-4 w-60">
+            <img src="{% static 'images/logo/logo.svg' %}" alt="logo" class="w-full dark:hidden" />
+            <img src="{% static 'images/logo/logo.svg' %}" alt="logo" class="hidden w-full dark:block" />
+        </div>
+        <div class="flex items-center justify-between w-full px-4">
+          <div>
+            <button id="navbarToggler"
+              class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden">
+              <span class="relative my-[6px] block h-[2px] w-[30px] bg-dark dark:bg-white"></span>
+              <span class="relative my-[6px] block h-[2px] w-[30px] bg-dark dark:bg-white"></span>
+              <span class="relative my-[6px] block h-[2px] w-[30px] bg-dark dark:bg-white"></span>
+            </button>
+            <nav id="navbarCollapse"
+              class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white dark:bg-dark-2 py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent dark:lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
+              <ul class="justify-center lg:flex 2xl:ml-20">
+                <li class="relative group text-primary">
+                  <a href="/dashboard/"
+                    class="active flex py-2 mx-8 text-blue-500 text-base font-medium ud-menu-scroll group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6">
+                    Dashboard
+                  </a>
+                </li>
+                <li class="relative group">
+                  <a href="/history/"
+                    class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6 xl:ml-10">
+                    History
+                  </a>
+                </li>
+                {% if user.is_superuser %}
+                <li class="relative group">
+                    <a href="/admin-dashboard/"
+                      class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6 xl:ml-10">
+                      Admin Panel
+                    </a>
+                </li>
+                {% endif %}
+                <!-- <li class="relative group">
+                  <a href="/#pricing"
+                    class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6 xl:ml-10">
+                    Profile
+                  </a>
+                </li> -->
+              </ul>
+            </nav>
+          </div>
+          <div class="flex items-center justify-end pr-16 lg:pr-0">
+            <div class="hidden sm:flex">
+            <span
+                class="loginBtn py-2 px-[22px] text-base font-medium text-dark dark:text-white hover:opacity-70">
+                Hello, {{ user.first_name }}
+            </span>&nbsp;&nbsp;
+              <a href="/logout/"
+                class="px-6 py-2 text-base font-medium text-white duration-300 ease-in-out rounded-md signUpBtn bg-primary hover:bg-blue-dark">
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ====== Navbar Section End -->
+
+  <!-- ====== Banner Section Start -->
+  <div class="relative z-10 overflow-hidden pt-[60px] pb-[10px] md:pt-[130px] lg:pt-[60px] dark:bg-dark">
+
+    
+  </div>
+  <!-- ====== Banner Section End -->
+
+
+  <!-- ====== Forms Section Start -->
+
+  <section class="bg-[#F4F7FF] py-14 lg:py-0 dark:bg-dark">
+    <div class="container">
+      <div class="flex flex-wrap -mx-4">
+        <div class="w-full px-4">
+          <div
+            class="mb-10 wow fadeInUp relative mx-auto max-w-[600px] overflow-hidden rounded-lg bg-white dark:bg-dark-2 py-14 px-8 text-center sm:px-12 md:px-[60px]"
+            data-wow-delay=".15s">
+
+            <div class="mb-10 text-center">
+                <span class="text-2xl text-white font-bold">Plan your content for Instagram</span>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+              <div class="mb-[22px]">
+                <input type="text" placeholder="Instagram Username (Eg: mynykaa)" name="ig_username"
+                  class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" required/>
+              </div>
+              <div class="mb-[22px]">
+                <input type="text" placeholder="Industry (Eg: Fashion)" name="industry"
+                  class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" required/>
+              </div>
+              <div class="mb-[22px]">
+                <input type="text" placeholder="Niche (Eg: Makeup & Beauty)" name="niche"
+                  class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" required/>
+              </div>
+              <div class="mb-[22px]">
+                <input type="text" placeholder="About your IG page" name="about_ig_page"
+                  class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" />
+              </div>
+              <div class="mb-[22px]">
+                <select name="weeks" class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" required>
+                  <option value="" disabled selected>Select number of weeks(Content Plan)</option>
+                  <option value="1 week">1 week</option>
+                  <option value="2 week">2 week</option>
+                </select>
+              </div>
+              <div class="mb-9">
+                <input type="submit" value="Submit"
+                  class="w-full px-5 py-3 text-base text-white transition duration-300 ease-in-out border rounded-md cursor-pointer border-primary bg-primary hover:bg-blue-dark" />
+              </div>
+            </form>
+
+
+            <div>
+              <span class="absolute top-1 right-1">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="1.39737" cy="38.6026" r="1.39737" transform="rotate(-90 1.39737 38.6026)"
+                    fill="#3056D3" />
+                  <circle cx="1.39737" cy="1.99122" r="1.39737" transform="rotate(-90 1.39737 1.99122)"
+                    fill="#3056D3" />
+                  <circle cx="13.6943" cy="38.6026" r="1.39737" transform="rotate(-90 13.6943 38.6026)"
+                    fill="#3056D3" />
+                  <circle cx="13.6943" cy="1.99122" r="1.39737" transform="rotate(-90 13.6943 1.99122)"
+                    fill="#3056D3" />
+                  <circle cx="25.9911" cy="38.6026" r="1.39737" transform="rotate(-90 25.9911 38.6026)"
+                    fill="#3056D3" />
+                  <circle cx="25.9911" cy="1.99122" r="1.39737" transform="rotate(-90 25.9911 1.99122)"
+                    fill="#3056D3" />
+                  <circle cx="38.288" cy="38.6026" r="1.39737" transform="rotate(-90 38.288 38.6026)" fill="#3056D3" />
+                  <circle cx="38.288" cy="1.99122" r="1.39737" transform="rotate(-90 38.288 1.99122)" fill="#3056D3" />
+                  <circle cx="1.39737" cy="26.3057" r="1.39737" transform="rotate(-90 1.39737 26.3057)"
+                    fill="#3056D3" />
+                  <circle cx="13.6943" cy="26.3057" r="1.39737" transform="rotate(-90 13.6943 26.3057)"
+                    fill="#3056D3" />
+                  <circle cx="25.9911" cy="26.3057" r="1.39737" transform="rotate(-90 25.9911 26.3057)"
+                    fill="#3056D3" />
+                  <circle cx="38.288" cy="26.3057" r="1.39737" transform="rotate(-90 38.288 26.3057)" fill="#3056D3" />
+                  <circle cx="1.39737" cy="14.0086" r="1.39737" transform="rotate(-90 1.39737 14.0086)"
+                    fill="#3056D3" />
+                  <circle cx="13.6943" cy="14.0086" r="1.39737" transform="rotate(-90 13.6943 14.0086)"
+                    fill="#3056D3" />
+                  <circle cx="25.9911" cy="14.0086" r="1.39737" transform="rotate(-90 25.9911 14.0086)"
+                    fill="#3056D3" />
+                  <circle cx="38.288" cy="14.0086" r="1.39737" transform="rotate(-90 38.288 14.0086)" fill="#3056D3" />
+                </svg>
+              </span>
+              <span class="absolute left-1 bottom-1">
+                <svg width="29" height="40" viewBox="0 0 29 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="2.288" cy="25.9912" r="1.39737" transform="rotate(-90 2.288 25.9912)" fill="#3056D3" />
+                  <circle cx="14.5849" cy="25.9911" r="1.39737" transform="rotate(-90 14.5849 25.9911)"
+                    fill="#3056D3" />
+                  <circle cx="26.7216" cy="25.9911" r="1.39737" transform="rotate(-90 26.7216 25.9911)"
+                    fill="#3056D3" />
+                  <circle cx="2.288" cy="13.6944" r="1.39737" transform="rotate(-90 2.288 13.6944)" fill="#3056D3" />
+                  <circle cx="14.5849" cy="13.6943" r="1.39737" transform="rotate(-90 14.5849 13.6943)"
+                    fill="#3056D3" />
+                  <circle cx="26.7216" cy="13.6943" r="1.39737" transform="rotate(-90 26.7216 13.6943)"
+                    fill="#3056D3" />
+                  <circle cx="2.288" cy="38.0087" r="1.39737" transform="rotate(-90 2.288 38.0087)" fill="#3056D3" />
+                  <circle cx="2.288" cy="1.39739" r="1.39737" transform="rotate(-90 2.288 1.39739)" fill="#3056D3" />
+                  <circle cx="14.5849" cy="38.0089" r="1.39737" transform="rotate(-90 14.5849 38.0089)"
+                    fill="#3056D3" />
+                  <circle cx="26.7216" cy="38.0089" r="1.39737" transform="rotate(-90 26.7216 38.0089)"
+                    fill="#3056D3" />
+                  <circle cx="14.5849" cy="1.39761" r="1.39737" transform="rotate(-90 14.5849 1.39761)"
+                    fill="#3056D3" />
+                  <circle cx="26.7216" cy="1.39761" r="1.39737" transform="rotate(-90 26.7216 1.39761)"
+                    fill="#3056D3" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ====== Forms Section End -->
+
+
+    {% if response %}
+    <div class="container">
+      <div class="flex flex-wrap -mx-2">
+          <div class="w-full px-2">
+              <div
+                  class="wow fadeInUp relative mx-auto max-w-full overflow-hidden rounded-lg bg-white py-14 px-4 sm:px-6 md:px-8"
+                  data-wow-delay=".15s">
+                  <div class="flex text-black justify-start min-h-screen p-4">
+                      <div class="w-full max-w-4xl bg-white rounded-lg p-4">
+                          <h1 class="text-2xl font-bold mb-4">Your Content Plan:</h1>
+                          <div class="prose dark:prose-dark">
+                              {{ response | safe }}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    {% endif %}
+            
+
+  <!-- ====== Footer Section Start -->
+  
+  <footer class="wow fadeInUp relative z-10 bg-[#090E34] pt-20 lg:pt-[30px]" data-wow-delay=".15s">
+    <div class="container">
+      <div class="flex flex-wrap -mx-4">
+        <div class="w-full px-4 sm:w-2/5 md:w-2/5 lg:w-2/5 xl:w-2/5">
+          <div class="mb-10 flex flex-col items-center justify-center md:items-start">
+            <div class="flex flex-wrap justify-center md:justify-start">
+              <a href="javascript:void(0)" class="px-3 py-2 text-base text-gray-7 hover:text-white hover:underline">
+                Privacy policy
+              </a>
+              <a href="javascript:void(0)" class="px-3 py-2 text-base text-gray-7 hover:text-white hover:underline">
+                Legal notice
+              </a>
+              <a href="javascript:void(0)" class="px-3 py-2 text-base text-gray-7 hover:text-white hover:underline">
+                Terms of service
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="w-full px-4 sm:w-1/5 md:w-1/5 lg:w-1/5 xl:w-1/5">
+          <div class="sm:mt-[10px] mb-[10px] flex justify-center space-x-6">
+            <a href="https://www.instagram.com/vinay.jain_18" target="_blank" class="text-gray-7 hover:text-white">
+              <i class="fab fa-instagram fa-lg"></i>
+            </a>
+            <a href="https://twitter.com/vinayjn18" target="_blank" class="text-gray-7 hover:text-white">
+              <i class="fab fa-twitter fa-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/vinayjain18/" target="_blank" class="text-gray-7 hover:text-white">
+              <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+          </div>
+        </div>
+        <div class="w-full px-4 sm:w-2/5 md:w-2/5 lg:w-2/5 xl:w-2/5 text-center">
+          <div class="mb-10">
+            <div class="mb-10 mt-[10px] flex justify-center md:justify-center sm:justify-center">
+              <p class="text-base text-gray-7">
+                Designed and Developed by
+                <a href="https://linkedin.com/in/vinayjain18" rel="nofollow noopener" target="_blank" class="text-gray-1 hover:underline">
+                  Vinay Jain
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ====== Footer Section End -->
+
+  <!-- ====== Back To Top Start -->
+  <a href="javascript:void(0)"
+    class="back-to-top fixed bottom-8 right-8 left-auto z-[999] hidden h-10 w-10 items-center justify-center rounded-md bg-primary text-white shadow-md transition duration-300 ease-in-out hover:bg-dark">
+    <span class="mt-[6px] h-3 w-3 rotate-45 border-t border-l border-white"></span>
+  </a>
+  <!-- ====== Back To Top End -->
+
+  <!-- ====== Made With Button Start -->
+  <a target="_blank" rel="nofollow noopener"
+    class="inline-flex items-center gap-[10px] py-2 px-[14px] rounded-lg bg-white dark:bg-dark-2 shadow-2 fixed bottom-8 left-4 sm:left-9 z-[999]"
+    href="https://www.linkedin.com/in/vinayjain18/">
+    <span class="text-base font-medium text-dark-3 dark:text-dark-6">
+      Made by
+    </span>
+    <span class="block w-px h-4 bg-stroke dark:bg-dark-3"></span>
+    <span class="block max-w-[88px] w-full text-white">
+      <img src="{% static 'images/vinay.svg' %}" alt="tailgrids" class="dark:hidden">
+      <img src="{% static 'images/vinay.svg' %}" alt="tailgrids" class="hidden dark:block">
+    </span>
+  </a>
+  <!-- ====== Made With Button End -->
+
+  <!-- ====== All Scripts -->
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+<svg width="200" height="50" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .text {
+            font-family: 'Arial, Helvetica, sans-serif';
+            font-size: 40px;
+            font-weight: bold;
+            fill: #FFFFFF; /* Change this color as needed */
+        }
+    </style>
+    <text x="10" y="40" class="text">Fluence</text>
+</svg>
