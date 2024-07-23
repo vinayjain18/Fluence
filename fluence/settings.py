@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ['https://fluence-cqiy.onrender.com/', 'localhost', "*"]
+ALLOWED_HOSTS = ['fluence-cqiy.onrender.com', 'localhost', "*"]
 
 # Application definition
 
