@@ -14,6 +14,11 @@ npm install
 echo "Building CSS..."
 npm run build-css
 
+# Ensure STATIC_ROOT is empty
+echo "Preparing static files directory..."
+rm -rf $STATIC_ROOT
+mkdir -p $STATIC_ROOT
+
 echo "Make Migration..."
 python3 manage.py makemigrations --noinput
 python3 manage.py migrate --noinput
