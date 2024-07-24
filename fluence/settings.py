@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['fluence-cqiy.onrender.com', 'localhost', "*"]
+ALLOWED_HOSTS = ['.vercel.app', 'fluence-cqiy.onrender.com', 'localhost'] 
 
 # Application definition
 
