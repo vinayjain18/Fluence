@@ -68,9 +68,9 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Disable Django's static file handling and allow WhiteNoise to take over
-# WHITENOISE_USE_FINDERS = False
-# WHITENOISE_MANIFEST_STRICT = False
-# WHITENOISE_AUTOREFRESH = True
+WHITENOISE_USE_FINDERS = False
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_AUTOREFRESH = True
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("CLIENT_ID")
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("CLIENT_SECRET")
@@ -152,7 +152,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #assets
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'assets') #assets
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
