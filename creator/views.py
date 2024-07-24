@@ -9,7 +9,7 @@ import datetime
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from bs4 import BeautifulSoup
-import asyncio
+# import asyncio
 
 # Create your views here.
 def index(request):
@@ -32,8 +32,8 @@ def dashboard(request):
         niche = request.POST.get("niche")
         about_ig_page = request.POST.get("about_ig_page")
         weeks = request.POST.get("weeks")
-        response = asyncio.run(generate_response(ig_username, industry, niche, about_ig_page, weeks))
-        # response = generate_response(ig_username, industry, niche, about_ig_page, weeks)
+        # response = asyncio.run(generate_response(ig_username, industry, niche, about_ig_page, weeks))
+        response = generate_response(ig_username, industry, niche, about_ig_page, weeks)
         if response.startswith("```html") and response.endswith("```"):
             response = response[7:-3]  # Remove the leading and trailing markdown code blocks
         messages.success(request, "Content plan generated successfully")

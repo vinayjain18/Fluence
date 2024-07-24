@@ -1,12 +1,13 @@
 import os
-import asyncio
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from openai import OpenAI
 from dotenv import load_dotenv
 import instaloader
 
 load_dotenv()
 
-async def scrape_instagram_profile(username):
+def scrape_instagram_profile(username):
     loader = instaloader.Instaloader()
     try:
         profile = instaloader.Profile.from_username(loader.context, username)
@@ -15,7 +16,7 @@ async def scrape_instagram_profile(username):
         print(f"An error occurred: {e}")
         return ""
 
-async def download_latest_captions(username, num_posts=10):
+def download_latest_captions(username, num_posts=10):
     loader = instaloader.Instaloader()
     try:
         profile = instaloader.Profile.from_username(loader.context, username)
@@ -29,15 +30,17 @@ async def download_latest_captions(username, num_posts=10):
         print(f"An error occurred: {e}")
         return ""
 
-async def generate_response(ig_username, industry, niche, extra, week):
+def generate_response(ig_username, industry, niche, extra, week):
     try:
         print("Calling----------------------------------------------------------------------------")
         
-        # Run Instagram scraping functions concurrently
-        ig_bio, ig_captions = await asyncio.gather(
-            scrape_instagram_profile(ig_username),
-            download_latest_captions(ig_username)
-        )
+        # Run Instagram scraping functions concurrently using ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            future_bio = executor.submit(scrape_instagram_profile, ig_username)
+            future_captions = executor.submit(download_latest_captions, ig_username)
+            
+            ig_bio = future_bio.result()
+            ig_captions = future_captions.result()
 
         chat_prompt = f"""Act as a social media marketer with 10 years of experience.
         I want you to generate a {week} content plan for Instagram that includes 1 reel and 1 post daily.
@@ -69,8 +72,7 @@ async def generate_response(ig_username, industry, niche, extra, week):
     except Exception as e:
         return f"Couldn't generate response due to following error: {e}\nTry again after few minutes"
 
-
 if __name__ == "__main__":
     ig_username = "narendramodi"
-    result = asyncio.run(generate_response(ig_username, "industry", "niche", "extra", "1 week"))
+    result = generate_response(ig_username, "industry", "niche", "extra", "1 week")
     print(result)
