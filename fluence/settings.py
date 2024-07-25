@@ -67,11 +67,6 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
 )
 
-# Disable Django's static file handling and allow WhiteNoise to take over
-# WHITENOISE_USE_FINDERS = False
-# WHITENOISE_MANIFEST_STRICT = False
-# WHITENOISE_AUTOREFRESH = True
-
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("CLIENT_ID")
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("CLIENT_SECRET")
 
