@@ -6,3 +6,4 @@ app.py
 .env
 node_modules/
 assets/
+vercel.json
