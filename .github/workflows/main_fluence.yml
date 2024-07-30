@@ -69,12 +69,6 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CAB119B571914C189561242ABD0934C3 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C563218C5D9E4C3EA00CECB56FD2DDE9 }}
 
-      - name: Create database and Staticfiles
-        run: |
-          python manage.py makemigrations --noinput
-          python manage.py migrate --noinput
-          python manage.py collectstatic --noinput --clear
-
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
