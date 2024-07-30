@@ -31,6 +31,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = ['https://fluence.azurewebsites.net', 'localhost', '*'] 
+CSRF_TRUSTED_ORIGINS = ['https://fluence.azurewebsites.net']
 
 # Application definition
 
@@ -69,6 +70,8 @@ AUTHENTICATION_BACKENDS = (
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'Strict'
+SESSION_COOKIE_SAMESITE = 'Strict'
 
 SECURE_HSTS_SECONDS = 31536000  # 1 year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
