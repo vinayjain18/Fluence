@@ -1,14 +1,11 @@
 (function () {
   "use strict";
 
-  // Directly add dark theme class
-  document.documentElement.classList.add('dark');
-
   // ======= Sticky
   window.onscroll = function () {
     const ud_header = document.querySelector(".ud-header");
     const sticky = ud_header.offsetTop;
-    const logo = document.querySelectorAll(".header-logos");
+    const logo = document.querySelectorAll(".header-logo");
 
     if (window.pageYOffset > sticky) {
       ud_header.classList.add("sticky");
@@ -19,11 +16,11 @@
     if(logo.length) {
       // === logo change
       if (ud_header.classList.contains("sticky")) {
-        document.querySelector(".header-logos").src =
-          "{% static 'images/logo/fluence-black.svg' %}"
+        document.querySelector(".header-logo").src =
+          "{% static 'images/logo/logo.svg' %}"
       } else {
-        document.querySelector(".header-logos").src =
-          "{% static 'images/logo/fluence-black.svg' %}"
+        document.querySelector(".header-logo").src =
+          "{% static 'images/logo/logo.svg' %}"
       }
     }
 
@@ -31,8 +28,8 @@
       if(logo.length) {
         // === logo change
         if (ud_header.classList.contains("sticky")) {
-          document.querySelector(".header-logos").src =
-            "{% static 'images/logo/fluence.svg' %}"
+          document.querySelector(".header-logo").src =
+            "{% static 'images/logo/logo.svg' %}"
         } 
       }
     }
