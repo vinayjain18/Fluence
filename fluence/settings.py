@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = ['https://fluence.azurewebsites.net', 'localhost', '*'] 
-CSRF_TRUSTED_ORIGINS = ['https://fluence.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['https://fluence.azurewebsites.net', '*']
 
 # Application definition
 
@@ -76,8 +76,8 @@ SESSION_COOKIE_SAMESITE = 'Strict'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("CLIENT_ID")
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("CLIENT_SECRET")
 
- # Social Auth settings
-# SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+# Social Auth settings
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['email', 'profile']
 
