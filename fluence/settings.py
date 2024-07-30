@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = ['https://fluence.azurewebsites.net', 'localhost', '*'] 
-CSRF_TRUSTED_ORIGINS = ['https://fluence.azurewebsites.net', '*']
+CSRF_TRUSTED_ORIGINS = ['https://fluence.azurewebsites.net']
 
 # Application definition
 
