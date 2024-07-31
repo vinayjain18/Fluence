@@ -98,6 +98,19 @@
   <!-- ====== Banner Section Start -->
   <div class="relative z-10 overflow-hidden pt-[60px] pb-[10px] md:pt-[130px] lg:pt-[60px] dark:bg-dark">
 
+    <!-- ====== Messages Section Start -->
+    {% if messages %}
+    <div class="container mt-4">
+        <div class="flex flex-col space-y-4">
+            {% for message in messages %}
+            <div class="p-4 text-white bg-blue-500 rounded-lg">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <!-- ====== Messages Section End -->
     
   </div>
   <!-- ====== Banner Section End -->

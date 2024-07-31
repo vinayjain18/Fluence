@@ -36,7 +36,7 @@ def dashboard(request):
         response = generate_response(ig_username, industry, niche, about_ig_page, weeks)
         if response.startswith("```html") and response.endswith("```"):
             response = response[7:-3]  # Remove the leading and trailing markdown code blocks
-        messages.success(request, "Content plan generated successfully")
+        messages.success(request, "Content plan generated successfully. Scroll down to bottom to view the plan.")
         input_context = f"IG Username: {ig_username}\nIndustry: {industry}\nNiche: {niche}\nAbout IG Page: {about_ig_page}\nWeeks: {weeks}"
         ContentGeneration.objects.create(email=request.user.email, input_context=input_context, content_output=response).save()
         return render(request, 'dashboard.html', {'response': response})
@@ -51,6 +51,12 @@ def history(request):
 @login_required(login_url='/signin/')
 def download_content(request, content_id):
     content_generation = get_object_or_404(ContentGeneration, pk=content_id)
+
+    # Check if the logged-in user is the owner of the content
+    if content_generation.email != request.user.email:
+        messages.error(request, "You do not have permission to download this content.")
+        return redirect('/dashboard/')  # Redirect to dashboard or appropriate page
+
     content_html = content_generation.content_output
 
     # Use BeautifulSoup to strip HTML tags

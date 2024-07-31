@@ -41,9 +41,9 @@
             <nav id="navbarCollapse"
               class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white dark:bg-dark-2 py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent dark:lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
               <ul class="justify-center lg:flex 2xl:ml-20">
-                <li class="relative group">
+                <li class="relative group text-primary">
                   <a href="/dashboard/"
-                    class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6">
+                    class="flex py-2 mx-8 text-blue-500 text-base font-medium ud-menu-scroll group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6">
                     Dashboard
                   </a>
                 </li>
@@ -61,6 +61,7 @@
                     </a>
                 </li>
                 {% endif %}
+
                 <li class="relative group lg:hidden">
                   <a href="/logout/"
                     class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6 xl:ml-10">
@@ -97,6 +98,19 @@
   <!-- ====== Banner Section Start -->
   <div class="relative z-10 overflow-hidden pt-[60px] pb-[10px] md:pt-[130px] lg:pt-[60px] dark:bg-dark">
 
+    <!-- ====== Messages Section Start -->
+    {% if messages %}
+    <div class="container mt-4">
+        <div class="flex flex-col space-y-4">
+            {% for message in messages %}
+            <div class="p-4 text-white bg-blue-500 rounded-lg">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <!-- ====== Messages Section End -->
     
   </div>
   <!-- ====== Banner Section End -->
