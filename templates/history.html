@@ -103,12 +103,20 @@
     <div class="container mt-4">
         <div class="flex flex-col space-y-4">
             {% for message in messages %}
-            <div class="p-4 text-white bg-blue-500 rounded-lg">
+            <div class="p-4 text-white bg-blue-500 rounded-lg message" id="message-{{ forloop.counter }}">
                 {{ message }}
             </div>
             {% endfor %}
         </div>
     </div>
+    <script>
+        // Hide messages after 5 seconds
+        setTimeout(() => {
+            document.querySelectorAll('.message').forEach((msg) => {
+                msg.style.display = 'none';
+            });
+        }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
     {% endif %}
     <!-- ====== Messages Section End -->
     
