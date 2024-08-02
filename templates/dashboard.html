@@ -138,7 +138,7 @@
                 <span class="text-2xl text-white font-bold">Plan your content for Instagram</span>
             </div>
 
-            <form method="post">
+            <form method="post" onsubmit="showSpinner();">
                 {% csrf_token %}
               <div class="mb-[22px]">
                 <input type="text" placeholder="Instagram Username (Eg: mynykaa)" name="ig_username"
@@ -168,6 +168,17 @@
                   class="w-full px-5 py-3 text-base text-white transition duration-300 ease-in-out border rounded-md cursor-pointer border-primary bg-primary hover:bg-blue-dark" />
               </div>
             </form>
+
+            <div id="spinner" class="hidden fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+                <div class="text-white text-lg">Generating content...</div>
+                <div class="loader ml-4"></div> <!-- Add your spinner styling here -->
+            </div>
+            <script>
+                function showSpinner() {
+                    document.getElementById('spinner').classList.remove('hidden');
+                    document.body.style.pointerEvents = 'none'; // Disable interactions
+                }
+            </script>
 
 
             <div>
@@ -237,7 +248,7 @@
 
 
     {% if response %}
-    <div class="container">
+    <div class="container" id="contentPlan">
       <div class="flex flex-wrap -mx-2">
           <div class="w-full px-2">
               <div
@@ -255,6 +266,10 @@
           </div>
       </div>
   </div>
+  <script>
+    // Scroll to the content plan when response is generated
+    document.getElementById('contentPlan')?.scrollIntoView({ behavior: 'smooth' });
+  </script>
     {% endif %}
             
 

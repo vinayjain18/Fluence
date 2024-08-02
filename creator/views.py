@@ -54,8 +54,8 @@ def download_content(request, content_id):
 
     # Check if the logged-in user is the owner of the content
     if content_generation.email != request.user.email:
-        messages.error(request, "You do not have permission to download this content.")
-        return redirect('/dashboard/')  # Redirect to dashboard or appropriate page
+        messages.error(request, "You do not have permission to download that content.")
+        return redirect('/history/')  # Redirect to dashboard or appropriate page
 
     content_html = content_generation.content_output
 
