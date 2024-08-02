@@ -86,7 +86,7 @@ Fluence is an Instagram content planner that helps creators and businesses strat
    ```
 
 ## App Link
-Access the live application here: https://fluence-cqiy.onrender.com/
+Access the live application here: https://fluence.azurewebsites.net/
 
 ## Contact
 For any questions or feedback, please contact me at vinayjain449@gmail.com

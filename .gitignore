@@ -7,3 +7,4 @@ app.py
 node_modules/
 assets/
 vercel.json
+db.sqlite3
