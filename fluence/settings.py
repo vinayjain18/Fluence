@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = ['https://fluence.azurewebsites.net', 'localhost', '*'] 
-CSRF_TRUSTED_ORIGINS = ['https://fluence.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['https://fluence.azurewebsites.net', 'https://fluence.websinova.com']
 
 # Application definition
 
@@ -118,9 +118,17 @@ WSGI_APPLICATION = 'fluence.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv("DATABASE_URL")
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv("DB_NAME"),
+        'USER': os.getenv("DB_USER"),
+        'PASSWORD': os.getenv("DB_PASS"),
+        'HOST': os.getenv("DB_HOST"),
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require'
+        },
+    },
 }
 
 # Password validation
