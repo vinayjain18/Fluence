@@ -18,22 +18,17 @@
     new WOW().init();
   </script>
   <style>
-    @keyframes spin {
-          0% {
-              transform: rotate(0deg);
-          }
-          100% {
-              transform: rotate(360deg);
-          }
+      @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
       }
-
       .spinner {
-          border: 4px solid rgba(0, 0, 0, 0.1);
-          width: 36px;
-          height: 36px;
+          border: 4px solid rgba(255, 255, 255, 0.3);
           border-radius: 50%;
-          border-left-color: #09f;
-          animation: spin 1s ease infinite;
+          border-top: 4px solid #ffffff;
+          width: 40px;
+          height: 40px;
+          animation: spin 1s linear infinite;
       }
   </style>
 </head>
@@ -157,7 +152,7 @@
                 <span class="text-2xl text-white font-bold">Plan your content for Instagram</span>
             </div>
 
-            <form method="post" onsubmit="showSpinner();">
+            <form method="post" onsubmit="return showSpinner();">
                 {% csrf_token %}
               <div class="mb-[22px]">
                 <input type="text" placeholder="Instagram Username (Eg: mynykaa)" name="ig_username"
@@ -371,6 +366,8 @@
   <script>
       function showSpinner() {
           document.getElementById('spinner').classList.remove('hidden');
+          document.body.style.overflow = 'hidden'; // Prevent scrolling
+          return true; // Allow the form submission to proceed
       }
   </script>
   <script src="{% static 'js/main.js' %}"></script>
