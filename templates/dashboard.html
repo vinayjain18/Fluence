@@ -37,7 +37,7 @@
         }
     }
 
-    .hidden {
+    .hidden-spinner {
         display: none;
     }
 
@@ -241,7 +241,7 @@
             </form>
 
           <!-- Spinner -->
-          <div id="spinner" class="hidden">
+          <div id="spinner" class="hidden-spinner">
             <div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
                 <div class="text-white text-lg">
                     <div class="spinner"></div>
@@ -424,7 +424,7 @@
   <!-- ====== All Scripts -->
   <script>
       function showSpinner() {
-          document.getElementById('spinner').classList.remove('hidden');
+          document.getElementById('spinner').classList.remove('hidden-spinner');
           return true; // Allow the form submission to proceed
       }
   </script>
